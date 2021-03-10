@@ -1,11 +1,11 @@
-import Title from './Title'
+import Header from './Header/Header'
 import SearchForm from './SearchForm'
 import Movie from './Movie'
 import MoviesList from './MoviesList'
 import ButtonBackToHome from './ButtonBackToHome'
 
 export {
-  Title,
+  Header,
   SearchForm,
   Movie,
   MoviesList,
