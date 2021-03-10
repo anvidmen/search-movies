@@ -1,36 +1,32 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 const API_KEY = '31823cb'
 
-export default class extends Component {
-    state = {
-        inputMovie:''
-    }
+const SearchForm = ({ onResults }) => {
+  const [inputMovie, setInputMovie] = useState('')
 
-    _handleChange = (e) => {
-        this.setState({inputMovie: e.target.value })
-    } 
+  const handleChange = (e) => {
+    setInputMovie(e.target.value)
+  }
 
-    _handleSubmit = (e) => {
-        e.preventDefault()
-        const { inputMovie } =this.state
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
-        .then(res => res.json())
-        .then(results => {
-           const { Search = [], totalResults = '0' } = results
-           console.log({Search, totalResults})
-           this.props.onResults(Search)
-         })
-    }
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
+      .then(res => res.json())
+      .then(results => {
+        const { Search = [], totalResults = '0' } = results
+        console.log({ Search, totalResults })
+        onResults(Search)
+      })
+  }
 
-  render () {
-    return (
-       <form onSubmit={this._handleSubmit}>
+  return (
+    <form onSubmit={handleSubmit}>
       <div className='field has-addons'>
         <div className='control'>
           <input
             className='input'
-             onChange={this._handleChange}
+            onChange={handleChange}
             type='text'
             placeholder='Movie to search...'
           />
@@ -39,7 +35,8 @@ export default class extends Component {
           <button className='button is-info'>Search</button>
         </div>
       </div>
-      </form>
-    )
-  }
+    </form>
+  )
 }
+
+export default SearchForm

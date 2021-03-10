@@ -10,10 +10,10 @@ export default class extends Component {
     render () {
         const { movies } = this.props
         return (
-        <div className='MoviesList'>
+        <div className='moviesList'>
             {movies.map(movie => {
                 return(
-                    <div key={movie.imdbID} className='MoviesList-item'>
+                    <div key={movie.imdbID} className='moviesList-item'>
                         <Movie
                             id={movie.imdbID}
                             title={movie.Title}
