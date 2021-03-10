@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonBackToHome } from '../components'
 
-export default function () {
+const NotFound = () => {
   return (
     <div>
       <h1 className='title-error'>404!</h1>
@@ -10,3 +10,5 @@ export default function () {
     </div>
   )
 }
+
+export default NotFound

@@ -14,7 +14,7 @@ export default class extends Component {
         const { id, poster, title, year } = this.props
     
     return (
-    <Link to={`/detail/${id}`} className = "card" >
+    <Link to={`/detail/${id}`} className="card" >
         <div className="card-image">
             <figure className="image">
             <img
