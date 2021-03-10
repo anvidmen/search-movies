@@ -4,9 +4,7 @@ const API_KEY = '31823cb'
 const SearchForm = ({ onResults }) => {
   const [inputMovie, setInputMovie] = useState('')
 
-  const handleChange = (e) => {
-    setInputMovie(e.target.value)
-  }
+  const handleChange = (e) => setInputMovie(e.target.value)
 
   const handleSubmit = (e) => {
     e.preventDefault()

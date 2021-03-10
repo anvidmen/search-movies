@@ -1,6 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Detail, Home, NotFound } from './pages'
+
+import Home from 'pages/Home/Home'
+import Detail from 'pages/Detail/Detail'
+import NotFound from 'pages/NotFound/NotFound'
+
 import './App.sass'
 import 'bulma/css/bulma.css'
 

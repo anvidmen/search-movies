@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBackToHome } from '../components'
+import Header from 'components/Header/Header'
+import ButtonBackToHome from 'components/ButtonBackToHome/ButtonBackToHome'
 
 const API_KEY = '31823cb'
 
@@ -31,6 +32,8 @@ export default class extends Component {
     render() {
         const { Title, Poster, Actors,Plot, Genre } = this.state.movie
         return (
+        <>
+            <Header title='Details Movie'/>
             <div className='details'>
                 <ButtonBackToHome />
                 <h1 className='details-title'>{Title}</h1>
@@ -39,6 +42,7 @@ export default class extends Component {
                 <span>Genre: {Genre}</span>
                 <p className='details-text'>Plot: {Plot}</p>
             </div>
+        </>
         )
     }
 }

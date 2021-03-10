@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Header, SearchForm, MoviesList } from '../components'
+import Header from 'components/Header/Header'
+import SearchForm from 'components/SearchForm/SearchForm'
+import MoviesList from 'components/MoviesList/MoviesList'
 
 const Home = () => {
   const [usedSearch, setUsedSearch] = useState(false)
@@ -18,7 +20,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      <Header title='Search Movies' />
       <div className='searchForm-wrapper'>
         <SearchForm onResults={handleResults} />
       </div>

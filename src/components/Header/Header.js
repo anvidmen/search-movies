@@ -1,8 +1,8 @@
 import React from 'react'
 import './styles.sass'
 
-const Header = () => (
-  <h1 className='header'>Search Movies</h1>
+const Header = ({ title }) => (
+  <h1 className='header'>{title}</h1>
 )
 
 export default Header
