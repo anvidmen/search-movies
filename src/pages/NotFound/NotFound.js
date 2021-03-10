@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBackToHome } from '../components'
+import ButtonBackToHome from 'components/ButtonBackToHome/ButtonBackToHome'
 
 const NotFound = () => {
   return (
