@@ -2,28 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Movie from 'components/Movie/Movie'
 
+const posterUrl = 'https://image.tmdb.org/t/p/original/'
+
 const MoviesList = (props) => {
   const { movies } = props
   return (
-    <div className='moviesList'>
-      {movies.map(movie => {
-        return (
-          <div key={movie.imdbID} className='moviesList-item'>
-            <Movie
-              id={movie.imdbID}
-              title={movie.Title}
-              year={movie.Year}
-              poster={movie.Poster}
-            />
-          </div>
-        )
-      })}
+    <div className='col-md-3 col-sm-6'>
+      {movies.map(movie =>
+        <div key={movie.id}>
+          <Movie
+            id={movie.id}
+            title={movie.title}
+            rating={movie.vote_average}
+            poster={posterUrl + movie.poster_path}
+          />
+        </div>
+      )}
     </div>
   )
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.array
+  id: PropTypes.number,
+  title: PropTypes.string,
+  rating: PropTypes.string,
+  poster: PropTypes.string
 }
 
 export default MoviesList

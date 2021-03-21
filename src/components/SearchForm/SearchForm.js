@@ -1,36 +1,31 @@
 import React, { useState } from 'react'
-const API_KEY = '31823cb'
+import { searchMovies } from 'api/index'
 
 const SearchForm = ({ onResults }) => {
-  const [inputMovie, setInputMovie] = useState('')
+  const [searchMovie, setSearchMovie] = useState('')
 
-  const handleChange = (e) => setInputMovie(e.target.value)
+  const handleChange = (e) => setSearchMovie(e.target.value)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
-      .then(res => res.json())
-      .then(results => {
-        const { Search = [], totalResults = '0' } = results
-        console.log({ Search, totalResults })
-        onResults(Search)
-      })
+    const results = await searchMovies(searchMovie)
+    onResults(results)
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className='field has-addons'>
+      <div className='input-group'>
+        <input
+          className='form-control rounded'
+          aria-label='Search'
+          aria-describedby='search-addon'
+          type='search'
+          placeholder='Movie to search...'
+          value={searchMovie}
+          onChange={handleChange}
+        />
         <div className='control'>
-          <input
-            className='input'
-            onChange={handleChange}
-            type='text'
-            placeholder='Movie to search...'
-          />
-        </div>
-        <div className='control'>
-          <button className='button is-info'>Search</button>
+          <button className='btn btn-outline-primary'>search</button>
         </div>
       </div>
     </form>
