@@ -1,37 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import ReactStars from 'react-rating-stars-component'
 
-export default class extends Component {
-    static propTypes = {
-        id: PropTypes.string,
-        title: PropTypes.string,
-        year: PropTypes.string,
-        poster: PropTypes.string 
-    }
+const Movie = (props) => {
+  const { id, poster, title, rating } = props
 
-    render() {
-        const { id, poster, title, year } = this.props
-    
-    return (
-    <Link to={`/detail/${id}`} className="card" >
-        <div className="card-image">
-            <figure className="image">
-            <img
-             alt={title}
-             src={poster} 
-            />
-            </figure>
-        </div>
-        <div className="card-content">
-            <div className="media">
-                <div className="media-content">
-                    <p className="title is-4">{title}</p>
-                    <p className="subtitle is-6">{year}</p>
-                </div>
-            </div>
-        </div>
+  return (
+    <Link to={`/movie/${id}`}>
+      <div className='card'>
+        <img className='img-fluid' src={poster} alt={title} />
+      </div>
+      <div className='mt-3'>
+        <p>Rated: {rating}</p>
+        <ReactStars
+          count={rating}
+          color='#f4c10f'
+          size={20}
+        />
+      </div>
     </Link>
-    )
-    }
+  )
 }
+
+Movie.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  poster: PropTypes.string,
+  rating: PropTypes.number
+}
+
+export default Movie
