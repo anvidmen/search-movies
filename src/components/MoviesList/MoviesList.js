@@ -7,9 +7,9 @@ const posterUrl = 'https://image.tmdb.org/t/p/original/'
 const MoviesList = (props) => {
   const { movies } = props
   return (
-    <div className='col-md-3 col-sm-6'>
+    <div className='row mt-3'>
       {movies.map(movie =>
-        <div key={movie.id}>
+        <div className='col-md-3 col-sm-6' key={movie.id}>
           <Movie
             id={movie.id}
             title={movie.title}

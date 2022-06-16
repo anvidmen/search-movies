@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './styles.sass'
 
 const ButtonBackToHome = () => (
-  <Link className='button is-info' to='/'>Go back home</Link>
+  <div className='back-to-home'>
+    <Link to='/'>Go back home</Link>
+  </div>
 )
 export default ButtonBackToHome

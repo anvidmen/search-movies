@@ -4,6 +4,7 @@ import SearchForm from 'components/SearchForm/SearchForm'
 import MoviesList from 'components/MoviesList/MoviesList'
 import { featuredMovies } from 'api/index'
 import Movie from 'components/Movie/Movie'
+import './styles.sass'
 
 const posterUrl = 'https://image.tmdb.org/t/p/original/'
 
@@ -33,8 +34,8 @@ const Home = () => {
 
   return (
     <div>
-      <Header title='Search Movies' />
-      <div className='searchForm-wrapper'>
+      <div className='nav-bar'>
+        <Header title='Search Movies' />
         <SearchForm onResults={handleResults} />
       </div>
       <div className='row mt-3'>
