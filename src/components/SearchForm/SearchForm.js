@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { searchMovies } from 'api/index'
+import './styles.sass'
 
 const SearchForm = ({ onResults }) => {
   const [searchMovie, setSearchMovie] = useState('')
@@ -8,26 +9,27 @@ const SearchForm = ({ onResults }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const results = await searchMovies(searchMovie)
-    onResults(results)
+
+    try {
+      const results = await searchMovies(searchMovie)
+      onResults(results)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='input-group'>
-        <input
-          className='form-control rounded'
-          aria-label='Search'
-          aria-describedby='search-addon'
-          type='search'
-          placeholder='Movie to search...'
-          value={searchMovie}
-          onChange={handleChange}
-        />
-        <div className='control'>
-          <button className='btn btn-outline-primary'>search</button>
-        </div>
-      </div>
+    <form className='form-inline' onSubmit={handleSubmit}>
+      <input
+        className='input-search form-control'
+        aria-label='Search'
+        aria-describedby='search-addon'
+        type='search'
+        placeholder='Movie to search...'
+        value={searchMovie}
+        onChange={handleChange}
+      />
+      <button className='btn btn-outline-success my-2 my-sm-0' type='submit'>search</button>
     </form>
   )
 }
