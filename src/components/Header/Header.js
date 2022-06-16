@@ -2,7 +2,11 @@ import React from 'react'
 import './styles.sass'
 
 const Header = ({ title }) => (
-  <h1 className='header'>{title}</h1>
+  <header className='header mb-4'>
+    <nav>
+      <h1 className='title'>{title}</h1>
+    </nav>
+  </header>
 )
 
 export default Header
