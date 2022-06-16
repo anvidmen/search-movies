@@ -37,3 +37,21 @@ export const featuredMovies = async () => {
     throw new Error(error)
   }
 }
+
+export const movieCast = async id => {
+  try {
+      const { data } = await axios.get(`${baseURL}/movie/${id}/credits`, {
+          params: {
+              api_key: API_KEY,
+          }
+      });
+      const modifiedData = data['cast'].map((c) => ({
+          id: c['cast_id'],
+          character: c['character'],
+          name: c['name'],
+          img: 'https://image.tmdb.org/t/p/w200' + c['profile_path'],
+      }))
+
+      return modifiedData;
+  } catch (error) { }
+}
