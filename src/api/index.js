@@ -53,12 +53,14 @@ export const movieCast = async id => {
     }))
 
     return modifiedData;
-  } catch (error) { }
+  } catch (error) {
+    throw new Error(error)
+  }
 }
 
 
 
-export const similarMovie = async id => {
+export const similarMovies = async id => {
   try {
     const { data } = await axios.get(`${baseURL}//movie/${id}/similar`, {
       params: {
