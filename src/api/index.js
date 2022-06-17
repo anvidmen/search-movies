@@ -58,11 +58,9 @@ export const movieCast = async id => {
   }
 }
 
-
-
 export const similarMovies = async id => {
   try {
-    const { data } = await axios.get(`${baseURL}//movie/${id}/similar`, {
+    const { data } = await axios.get(`${baseURL}/movie/${id}/similar`, {
       params: {
         api_key: API_KEY,
         language: 'en_US'
@@ -80,6 +78,19 @@ export const similarMovies = async id => {
     }))
 
     return modifiedData;
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const movieVideos = async id => {
+  try {
+    const { data } = await axios.get(`${baseURL}/movie/${id}/videos`, {
+      params: {
+        api_key: API_KEY,
+      }
+    });
+    return data['results'][0];
   } catch (error) {
     throw new Error(error)
   }
