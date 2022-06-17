@@ -4,8 +4,8 @@ import ButtonBackToHome from 'components/ButtonBackToHome/ButtonBackToHome'
 import ReactStars from 'react-rating-stars-component'
 import { movieDetail, movieCast } from 'api/index'
 import CastList from 'components/CastList/CastList'
-import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css'
 import './styles.sass'
+import Footer from 'components/Footer/Footer'
 
 const Detail = ({ match }) => {
   const params = match.params
@@ -37,8 +37,10 @@ const Detail = ({ match }) => {
 
   return (
     <>
-      <Header className='header' title='Details Movie' />
-      <ButtonBackToHome />
+      <div className='container'>
+        <Header title='Details Movie' />
+        <ButtonBackToHome />
+      </div>
       <div className='container'>
         <div className='row mt-2'>
           <div className='col text-center' style={{ width: '100%' }}>
@@ -71,27 +73,27 @@ const Detail = ({ match }) => {
               <ReactStars
                 count={vote_average}
                 size={20}
-                color='#f4c10f'
+                color='#ffff21'
               />
             </div>
             <div className='mt-3'>
               <p className='details'>OVERVIEW</p>
-              {overview}
+              <p style={{ color: '#dbdbdb' }}>{overview}</p>
             </div>
           </div>
         </div>
         <div className='row mt-3'>
           <div className='col-md-3'>
             <p className='details'>RELEASE DATE</p>
-            <p style={{ color: '#f4c10f' }}>{release_date}</p>
+            <p style={{ color: '#ffff21' }}>{release_date}</p>
           </div>
           <div className='col-md-3'>
             <p className='details'>RUN TIME</p>
-            <p style={{ color: '#f4c10f' }}>{runtime} min</p>
+            <p style={{ color: '#ffff21' }}>{runtime} min</p>
           </div>
           <div className='col-md-5'>
             <p className='details'>HOMEPAGE</p>
-            <a style={{ color: '#f4c10f' }} href={homepage} target="_blank" rel="noopener noreferrer">{title}</a>
+            <a style={{ color: '#ffff21' }} href={homepage} target="_blank" rel="noopener noreferrer">{title}</a>
           </div>
         </div>
         <div className='row mt-3'>
@@ -101,6 +103,7 @@ const Detail = ({ match }) => {
         </div>
         <CastList cast={cast} />
       </div>
+      <Footer />
     </>
   )
 }
