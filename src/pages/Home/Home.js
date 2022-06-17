@@ -5,6 +5,7 @@ import MoviesList from 'components/MoviesList/MoviesList'
 import { featuredMovies } from 'api/index'
 import Movie from 'components/Movie/Movie'
 import './styles.sass'
+import Footer from 'components/Footer/Footer'
 
 const posterUrl = 'https://image.tmdb.org/t/p/original/'
 
@@ -33,27 +34,30 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
       <div className='nav-bar'>
         <Header title='Search Movies' />
         <SearchForm onResults={handleResults} />
       </div>
-      <div className='row mt-3'>
-        {usedSearch
-          ? renderResults()
-          : movies.map(movie =>
-            <div className='col-md-3' key={movie.id}>
-              <Movie
-                id={movie.id}
-                title={movie.title}
-                rating={movie.vote_average}
-                poster={posterUrl + movie.poster_path}
-              />
-            </div>
-          )}
+      <div className='container'>
+        <div className='row mt-3'>
+          {usedSearch
+            ? renderResults()
+            : movies.map(movie =>
+              <div className='col-md-3' key={movie.id}>
+                <Movie
+                  id={movie.id}
+                  title={movie.title}
+                  rating={movie.vote_average}
+                  poster={posterUrl + movie.poster_path}
+                />
+              </div>
+            )}
 
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 
