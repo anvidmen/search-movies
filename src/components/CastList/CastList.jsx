@@ -13,7 +13,7 @@ const CastList = ({ cast }) => {
                     <p className="font-weight-bold text-center">{c.name}</p>
                     <p
                         className="font-weight-light text-center"
-                        style={{ color: "#5a606b" }}
+                        style={{ color: "#ffff21" }}
                     >
                         {c.character}
                     </p>
