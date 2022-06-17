@@ -2,22 +2,24 @@ import React, { useEffect, useState } from 'react'
 import Header from 'components/Header/Header'
 import ButtonBackToHome from 'components/ButtonBackToHome/ButtonBackToHome'
 import ReactStars from 'react-rating-stars-component'
-import { movieDetail, movieCast } from 'api/index'
+import { movieDetail, movieCast, similarMovies } from 'api/index'
 import CastList from 'components/CastList/CastList'
 import './styles.sass'
 import Footer from 'components/Footer/Footer'
+import SimilarMovieList from 'components/SimilarMovieList/SimilarMovieList'
 
 const Detail = ({ match }) => {
   const params = match.params
   const [detail, setDetail] = useState([])
-  const [cast, setCast] = useState([]);
-
+  const [cast, setCast] = useState([])
+  const [moviesInCommon, setMoviesInCommon] = useState([])
   const { title, backdrop_path, vote_average, overview, genres, runtime, release_date, homepage } = detail
 
   useEffect(() => {
     const fetchAPI = async () => {
       setDetail(await movieDetail(params.id))
       setCast(await movieCast(params.id))
+      setMoviesInCommon(await similarMovies(params.id))
     }
     fetchAPI()
   }, [params.id])
@@ -102,6 +104,12 @@ const Detail = ({ match }) => {
           </div>
         </div>
         <CastList cast={cast} />
+        <div className="row mt-3">
+          <div className="col">
+            <p className='details'>SIMILAR MOVIES</p>
+          </div>
+        </div>
+        <SimilarMovieList similarMovies={moviesInCommon} />
       </div>
       <Footer />
     </>
