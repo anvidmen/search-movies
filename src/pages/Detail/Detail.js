@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react'
 import Header from 'components/Header/Header'
 import ButtonBackToHome from 'components/ButtonBackToHome/ButtonBackToHome'
 import ReactStars from 'react-rating-stars-component'
-import { movieDetail, movieCast, similarMovies } from 'api/index'
+import { movieDetail, movieCast, similarMovies, movieVideos } from 'api/index'
 import CastList from 'components/CastList/CastList'
-import './styles.sass'
 import Footer from 'components/Footer/Footer'
 import SimilarMovieList from 'components/SimilarMovieList/SimilarMovieList'
+import MoviePlayer from 'components/MoviePlayer/MoviePlayer'
+import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
+import './styles.sass'
 
 const Detail = ({ match }) => {
   const params = match.params
   const [detail, setDetail] = useState([])
   const [cast, setCast] = useState([])
   const [moviesInCommon, setMoviesInCommon] = useState([])
+  const [video, setVideo] = useState([])
+  const [isOpen, setIsOpen] = useState(false);
+
   const { title, backdrop_path, vote_average, overview, genres, runtime, release_date, homepage } = detail
 
   useEffect(() => {
@@ -20,6 +25,7 @@ const Detail = ({ match }) => {
       setDetail(await movieDetail(params.id))
       setCast(await movieCast(params.id))
       setMoviesInCommon(await similarMovies(params.id))
+      setVideo(await movieVideos(params.id))
     }
     fetchAPI()
   }, [params.id])
@@ -45,12 +51,25 @@ const Detail = ({ match }) => {
       </div>
       <div className='container'>
         <div className='row mt-2'>
+          <MoviePlayer
+            show={isOpen}
+            onHide={() => setIsOpen(false)}
+            title={title}
+            idVideo={video.key}
+          />
           <div className='col text-center' style={{ width: '100%' }}>
             <img
               className='img-fluid'
               src={`http://image.tmdb.org/t/p/original/${backdrop_path}`}
               alt={title}
             />
+            <div className="carousel-center">
+              <i
+                onClick={() => setIsOpen(true)}
+                className="far fa-play-circle"
+                style={{ fontSize: 95, color: "#f4c10f", cursor: "pointer" }}
+              ></i>
+            </div>
             <div
               className='carousel-caption'
               style={{ textAlign: 'center', fontSize: 35 }}
