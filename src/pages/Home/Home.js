@@ -7,7 +7,7 @@ import Movie from 'components/Movie/Movie'
 import './styles.sass'
 import Footer from 'components/Footer/Footer'
 
-const posterUrl = 'https://image.tmdb.org/t/p/original/'
+const posterUrl = 'https://image.tmdb.org/t/p/original'
 
 const Home = () => {
   const [movies, setMovies] = useState([])
@@ -35,21 +35,21 @@ const Home = () => {
 
   return (
     <>
-      <div className='nav-bar'>
+      <div className='nav-bar container'>
         <Header title='Search Movies' />
         <SearchForm onResults={handleResults} />
       </div>
       <div className='container'>
-        <div className='row mt-4'>
+        <div className='row'>
           {usedSearch
             ? renderResults()
             : movies.map(movie =>
-              <div className='col-md-3 col-sm-6 mt-4' key={movie.id}>
+              <div className='col-md-3 col-sm-6 mt-3' key={movie.id}>
                 <Movie
                   id={movie.id}
                   title={movie.title}
                   rating={movie.vote_average}
-                  poster={posterUrl + movie.poster_path}
+                  poster={`${posterUrl}/${movie.poster_path}`}
                 />
               </div>
             )}
