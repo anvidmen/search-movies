@@ -45,7 +45,7 @@ const Detail = ({ match }) => {
 
   return (
     <>
-      <div className='container'>
+      <div className='container mt-4'>
         <Header title='Details Movie' />
         <ButtonBackToHome />
       </div>
