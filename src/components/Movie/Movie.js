@@ -2,24 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import ReactStars from 'react-rating-stars-component'
+import './styles.sass'
 
-const Movie = (props) => {
+const Movie = props => {
   const { id, poster, title, rating } = props
 
   return (
-    <Link to={`/movie/${id}`}>
+    <>
       <div className='card'>
-        <img className='img-fluid' src={poster} alt={title} />
+        <Link className='movie' to={`/movie/${id}`}>
+          <img className='img-fluid' src={poster} alt={title} />
+        </Link>
       </div>
-      <div className='mt-3'>
+      <div className='rating-movie'>
         <p>Rated: {rating}</p>
         <ReactStars
           count={rating}
-          color='#f4c10f'
-          size={20}
+          color='#ffff21'
+          size={18}
         />
       </div>
-    </Link>
+    </>
   )
 }
 
