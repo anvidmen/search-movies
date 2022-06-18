@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.sass'
 
 const Header = ({ title }) => (
-  <header className='header mb-4'>
+  <header className='header'>
     <nav>
       <h1 className='title'>{title}</h1>
     </nav>
