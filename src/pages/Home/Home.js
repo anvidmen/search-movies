@@ -40,11 +40,11 @@ const Home = () => {
         <SearchForm onResults={handleResults} />
       </div>
       <div className='container'>
-        <div className='row mt-3'>
+        <div className='row mt-4'>
           {usedSearch
             ? renderResults()
             : movies.map(movie =>
-              <div className='col-md-3' key={movie.id}>
+              <div className='col-md-3 col-sm-6 mt-4' key={movie.id}>
                 <Movie
                   id={movie.id}
                   title={movie.title}
