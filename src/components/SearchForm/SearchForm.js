@@ -5,9 +5,9 @@ import './styles.sass'
 const SearchForm = ({ onResults }) => {
   const [searchMovie, setSearchMovie] = useState('')
 
-  const handleChange = (e) => setSearchMovie(e.target.value)
+  const handleChange = e => setSearchMovie(e.target.value)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
     try {
@@ -19,7 +19,7 @@ const SearchForm = ({ onResults }) => {
   }
 
   return (
-    <form className='form-inline' onSubmit={handleSubmit}>
+    <form className='form-inline mt-2' onSubmit={handleSubmit}>
       <input
         className='input-search form-control'
         aria-label='Search'
@@ -29,7 +29,7 @@ const SearchForm = ({ onResults }) => {
         value={searchMovie}
         onChange={handleChange}
       />
-      <button className='btn btn-outline-success my-2 my-sm-0' type='submit'>search</button>
+      <button className='btn btn-outline-warning my-2 my-sm-0' type='submit'>search</button>
     </form>
   )
 }
