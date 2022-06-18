@@ -4,7 +4,7 @@ import './styles.sass'
 
 const ButtonBackToHome = () => (
   <div className='back-to-home'>
-    <Link to='/'>Go back home</Link>
+    <Link to='/'><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></Link>
   </div>
 )
 export default ButtonBackToHome
